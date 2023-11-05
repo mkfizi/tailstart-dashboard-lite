@@ -260,7 +260,7 @@
             resize: () => {
                 app.view.viewportHeight.toggle();
 
-                if(app.element.navbarMenu) {
+                if(app.element.navbar) {
                     app.view.menu.navbar.toggleResponsive();
                 }
             },
