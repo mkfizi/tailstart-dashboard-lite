@@ -260,14 +260,14 @@
             resize: () => {
                 app.view.viewportHeight.toggle();
 
-                if(app.element.navbar) {
+                if(app.element.navbarMenu) {
                     app.view.menu.navbar.toggleResponsive();
                 }
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                if(app.element.navbarMenu) {
+                if(app.element.navbar) {
                     app.view.menu.navbar.toggleScroll();
                 }
             }
