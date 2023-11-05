@@ -38,6 +38,18 @@
             }
         },
 
+        navbar: {
+
+            // Toggle navbar appearance base on window scroll Y position
+            toggle: () => {
+                if (app.element.navbar) {
+                    const isScrolled = window.scrollY > 0;
+                    app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800', 'shadow');
+                    app.element.navbar.classList[isScrolled ? 'remove' : 'add']('border-transparent', 'dark:border-transparent');
+                }
+            },
+        },
+
         menu: {
 
             // Open menu
@@ -106,49 +118,46 @@
 
                 // Open navbar menu
                 open: () => {
-                    app.view.menu.open(app.element.navbarMenu);
-                    app.view.menu.forceFocus(app.element.navbarMenu);
-
-                    app.view.menu.navbar.clickOutside = (event) => app.view.menu.clickOutside(app.view.menu.navbar, app.element.navbarMenu, event)
-                    app.view.menu.navbar.escape = (event) => app.view.menu.escape(app.view.menu.navbar, app.element.navbarMenu, event)
-                    app.view.menu.navbar.focusTrap = (event) => app.view.menu.focusTrap(app.element.navbarMenu, event)
-
-                    window.addEventListener('click', app.view.menu.navbar.clickOutside);
-                    window.addEventListener('keydown', app.view.menu.navbar.escape);
-                    window.addEventListener('keydown', app.view.menu.navbar.focusTrap);
+                    if (app.element.navbarMenu) {
+                        app.view.menu.open(app.element.navbarMenu);
+                        app.view.menu.forceFocus(app.element.navbarMenu);
+    
+                        app.view.menu.navbar.clickOutside = (event) => app.view.menu.clickOutside(app.view.menu.navbar, app.element.navbarMenu, event)
+                        app.view.menu.navbar.escape = (event) => app.view.menu.escape(app.view.menu.navbar, app.element.navbarMenu, event)
+                        app.view.menu.navbar.focusTrap = (event) => app.view.menu.focusTrap(app.element.navbarMenu, event)
+    
+                        window.addEventListener('click', app.view.menu.navbar.clickOutside);
+                        window.addEventListener('keydown', app.view.menu.navbar.escape);
+                        window.addEventListener('keydown', app.view.menu.navbar.focusTrap);
+                    }
                 },
 
                 // Close navbar menu
                 close: () => {
-                    app.view.menu.close(app.element.navbarMenu);
+                    if (app.element.navbarMenu) {
+                        app.view.menu.close(app.element.navbarMenu);
 
-                    window.removeEventListener('click', app.view.menu.navbar.clickOutside);
-                    window.removeEventListener('keydown', app.view.menu.navbar.escape);
-                    window.removeEventListener('keydown', app.view.menu.navbar.focusTrap);
-                },
-
-                // Toggle navbar appearance base on window scroll Y position
-                toggleScroll: () => {
-                    if (app.element.navbar) {
-                        const isScrolled = window.scrollY > 0;
-                        app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800', 'shadow');
-                        app.element.navbar.classList[isScrolled ? 'remove' : 'add']('border-transparent', 'dark:border-transparent');
+                        window.removeEventListener('click', app.view.menu.navbar.clickOutside);
+                        window.removeEventListener('keydown', app.view.menu.navbar.escape);
+                        window.removeEventListener('keydown', app.view.menu.navbar.focusTrap);
                     }
                 },
 
                 // Handle when switching view between breakpoint size
                 toggleResponsive: () => {
-                    
-                    // If window width past breakpoint size, close menu and remove `[aria-hidden]` attribute from it
-                    if (window.innerWidth >= app.breakpointSize) {
-                        if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
-                            app.view.menu.navbar.close();
-                        }
+                    if (app.element.navbarMenu) {
 
-                        app.element.navbarMenu.removeAttribute('aria-hidden');
-                    } else {
-                        if (!app.element.navbarMenu.getAttribute('aria-hidden')) {
-                            app.element.navbarMenu.setAttribute('aria-hidden', true);
+                        // If window width past breakpoint size, close menu and remove `[aria-hidden]` attribute from it
+                        if (window.innerWidth >= app.breakpointSize) {
+                            if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
+                                app.view.menu.navbar.close();
+                            }
+
+                            app.element.navbarMenu.removeAttribute('aria-hidden');
+                        } else {
+                            if (!app.element.navbarMenu.getAttribute('aria-hidden')) {
+                                app.element.navbarMenu.setAttribute('aria-hidden', true);
+                            }
                         }
                     }
                 }
@@ -157,30 +166,36 @@
             settings: {
                 // Open on this page menu
                 open: () => {
-                    app.view.menu.open(app.element.settingsMenu);
+                    if (app.element.settingsMenu) {
+                        app.view.menu.open(app.element.settingsMenu);
 
-                    app.view.menu.settings.clickOutside = (event) => app.view.menu.clickOutside(app.view.menu.settings, app.element.settingsMenu, event)
-                    app.view.menu.settings.escape = (event) => app.view.menu.escape(app.view.menu.settings, app.element.settingsMenu, event)
+                        app.view.menu.settings.clickOutside = (event) => app.view.menu.clickOutside(app.view.menu.settings, app.element.settingsMenu, event)
+                        app.view.menu.settings.escape = (event) => app.view.menu.escape(app.view.menu.settings, app.element.settingsMenu, event)
 
-                    window.addEventListener('click', app.view.menu.settings.clickOutside);
-                    window.addEventListener('keydown', app.view.menu.settings.escape);
+                        window.addEventListener('click', app.view.menu.settings.clickOutside);
+                        window.addEventListener('keydown', app.view.menu.settings.escape);
+                    }
                 },
 
                 // Close on this page menu
                 close: () => {
-                    app.view.menu.close(app.element.settingsMenu);
+                    if (app.element.settingsMenu) {
+                        app.view.menu.close(app.element.settingsMenu);
 
-                    window.removeEventListener('click', app.view.menu.settings.clickOutside);
-                    window.removeEventListener('keydown', app.view.menu.settings.escape);
+                        window.removeEventListener('click', app.view.menu.settings.clickOutside);
+                        window.removeEventListener('keydown', app.view.menu.settings.escape);
+                    }
                 },
 
                 // Toggle on this page menu
                 toggle: () => {
-                    let isOpen = (app.element.settingsMenu.getAttribute('aria-hidden') === 'true');
+                    if (app.element.settingsMenu) {
+                        let isOpen = (app.element.settingsMenu.getAttribute('aria-hidden') === 'true');
 
-                    isOpen 
-                        ? app.view.menu.settings.open()
-                        : app.view.menu.settings.close();
+                        isOpen 
+                            ? app.view.menu.settings.open()
+                            : app.view.menu.settings.close();
+                    }
                 },
             }
         },
@@ -217,10 +232,7 @@
         init: () => {
             app.view.viewportHeight.toggle();
             app.view.footer.init();
-
-            if (app.element.navbarMenu) {
-                app.view.menu.navbar.toggleResponsive();
-            }
+            app.view.menu.navbar.toggleResponsive();
         }
     }
 
@@ -259,17 +271,12 @@
             // Handle window 'resize' event
             resize: () => {
                 app.view.viewportHeight.toggle();
-
-                if(app.element.navbarMenu) {
-                    app.view.menu.navbar.toggleResponsive();
-                }
+                app.view.menu.navbar.toggleResponsive();
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                if(app.element.navbar) {
-                    app.view.menu.navbar.toggleScroll();
-                }
+                app.view.navbar.toggle();
             }
         },
 
