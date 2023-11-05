@@ -57,23 +57,6 @@
                 });
             },
 
-            // Handle when switching view between breakpoint size
-            toggleResponsive: (targetView, targetElement) => {
-
-                // If window width past breakpoint size, close menu and remove `[aria-hidden]` attribute from it
-                if (window.innerWidth >= app.breakpointSize) {
-                    if (targetElement.getAttribute('aria-hidden') === 'false') {
-                        targetView.close();
-                    }
-
-                    targetElement.removeAttribute('aria-hidden');
-                } else {
-                    if (!targetElement.getAttribute('aria-hidden')) {
-                        targetElement.setAttribute('aria-hidden', true);
-                    }
-                }
-            },
-
             // Force focus on element before initialize focus trap
             forceFocus: (targetElement) => {
                 targetElement.setAttribute('tabindex', 1);
@@ -155,7 +138,19 @@
 
                 // Handle when switching view between breakpoint size
                 toggleResponsive: () => {
-                    app.view.menu.toggleResponsive(app.view.menu.navbar, app.element.navbarMenu);
+                    
+                    // If window width past breakpoint size, close menu and remove `[aria-hidden]` attribute from it
+                    if (window.innerWidth >= app.breakpointSize) {
+                        if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
+                            app.view.menu.navbar.close();
+                        }
+
+                        app.element.navbarMenu.removeAttribute('aria-hidden');
+                    } else {
+                        if (!app.element.navbarMenu.getAttribute('aria-hidden')) {
+                            app.element.navbarMenu.setAttribute('aria-hidden', true);
+                        }
+                    }
                 }
             },
 
