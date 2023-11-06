@@ -165,7 +165,7 @@
 
             settings: {
 
-                // Open on settings menu
+                // Open settings menu
                 open: () => {
                     if (app.element.settingsMenu) {
                         app.view.menu.open(app.element.settingsMenu);
@@ -178,7 +178,7 @@
                     }
                 },
 
-                // Close on settings menu
+                // Close settings menu
                 close: () => {
                     if (app.element.settingsMenu) {
                         app.view.menu.close(app.element.settingsMenu);
@@ -188,7 +188,7 @@
                     }
                 },
 
-                // Toggle on settings menu
+                // Toggle settings menu
                 toggle: () => {
                     if (app.element.settingsMenu) {
                         let isOpen = (app.element.settingsMenu.getAttribute('aria-hidden') === 'true');
