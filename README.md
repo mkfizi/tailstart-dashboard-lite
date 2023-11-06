@@ -11,7 +11,7 @@ TailwindCSS dashboard lite starter kit.
 * Accesibility compliant and best practices: Website is designed with accessibility considerations in mind to provide a better user experience for all users while using best practices.
 * SEO-friendly metadata and social media tags: Includes relevant metadata and tags to optimize the website for search engines and improve social media sharing.
 * Sticky navbar with appearance toggle: Navbar remains fixed at the top of the page, and its appearance dynamically changes based on current scroll position.
-* Responsive navbar menu with click outside, escape key and focus trap handler: Navbar menu is programmed with proper keyboard navigation and responsive behaviour on all screen sizes.
+* Responsive menus with click outside, escape key and focus trap handler: Sidebar menu and dropdown menu are programmed with proper keyboard navigation and responsive behaviour on all screen sizes.
 
 ## Installation
 Clone this repository to get started.
