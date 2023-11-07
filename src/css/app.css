@@ -566,6 +566,10 @@ video {
   left: 50%;
 }
 
+.right-0 {
+  right: 0px;
+}
+
 .right-4 {
   right: 1rem;
 }
@@ -574,8 +578,8 @@ video {
   top: 0px;
 }
 
-.top-16 {
-  top: 4rem;
+.top-14 {
+  top: 3.5rem;
 }
 
 .top-4 {
@@ -595,8 +599,8 @@ video {
   margin-bottom: 2rem;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .block {
@@ -1196,10 +1200,6 @@ body{
 }
 
 @media (min-width: 640px) {
-  .sm\:right-8 {
-    right: 2rem;
-  }
-
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
